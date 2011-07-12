@@ -3,7 +3,7 @@
 class TriangleClassifier
   def self.classify(a, b, c)
 
-    check_sides(a, b, c)
+    self.check_sides(a, b, c)
 
     case [a, b, c].uniq.size
       when 1 then :equilateral
