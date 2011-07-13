@@ -5,7 +5,7 @@ class TriangleClassifier
 
     @@sides = [a, b, c]
 
-    self.check_inputs
+    self.normalize_inputs
     self.check_sides
 
     case @@sides.uniq.size
@@ -29,7 +29,7 @@ class TriangleClassifier
     end
   end
 
-  def self.check_inputs
+  def self.normalize_inputs
     if @@sides.map{|e| e.class}.uniq.size != 1
       @@sides.map!{|e| e.to_f}
     end
