@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../lib/triangle_classifier.r
 describe "TriangleClassifier" do
 
   it "should exist" do
-    TriangleClassifier.new.should_not be_nil
+    defined?(TriangleClassifier).should_not be_nil
   end
 
   context "invalid length sides" do
