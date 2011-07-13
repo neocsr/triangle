@@ -8,20 +8,20 @@ describe "TriangleClassifier" do
 
   context "handling numeric input" do
     it "should convert to one numeric type for all sides" do
-      TriangleClassifier.check_inputs([5, 5.0, 5.0]).should eql([5.0, 5.0, 5.0])
+      TriangleClassifier.classify(5, 5.0, 5.0).should eql(:equilateral)
     end
     it "should use the same values if the numeric type is the same" do
-      TriangleClassifier.check_inputs([5, 5, 5]).should eql([5, 5, 5])
+      TriangleClassifier.classify(5, 5, 5).should eql(:equilateral)
     end
   end
 
   context "invalid length sides" do
     it "should raise error when any length is zero or negative" do
-      expect{TriangleClassifier.check_sides([0, 5, 5])}.to raise_error(ArgumentError)
+      expect{TriangleClassifier.classify(0, 5, 5)}.to raise_error(ArgumentError)
     end    
     
     it "should raise error when length of the largest side greater than the sum of the others" do
-      expect{TriangleClassifier.check_sides([5, 5, 11])}.to raise_error(ArgumentError)
+      expect{TriangleClassifier.classify(5, 5, 11)}.to raise_error(ArgumentError)
     end    
   end
 
