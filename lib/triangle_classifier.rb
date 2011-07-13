@@ -1,14 +1,14 @@
 # TriangleClassifier
 
-require 'bigdecimal'
-
 class TriangleClassifier
   def self.classify(a, b, c)
 
-    a, b, c = self.check_inputs(a, b, c)
-    self.check_sides(a, b, c)
+    @@sides = [a, b, c]
 
-    case [a, b, c].uniq.size
+    @@sides = self.check_inputs(@@sides)
+    self.check_sides(@@sides)
+
+    case @@sides.uniq.size
       when 1 then :equilateral
       when 2 then :isosceles
       else        :scalene
@@ -18,8 +18,8 @@ class TriangleClassifier
 
   private
 
-  def self.check_sides(a, b, c)
-    sides = [a, b, c].sort
+  def self.check_sides(sides)
+    sides = sides.sort
 
     if sides.any? { |s| s <= 0 }
       raise ArgumentError
@@ -30,11 +30,11 @@ class TriangleClassifier
     end
   end
 
-  def self.check_inputs(a, b, c)
-    if [a, b, c].map{|e| e.class}.uniq.size == 1
-      [a, b, c]
+  def self.check_inputs(sides)
+    if sides.map{|e| e.class}.uniq.size == 1
+      sides
     else
-      [a.to_f, b.to_f, c.to_f]
+      sides.map{|e| e.to_f}
     end
   end
 end
