@@ -12,7 +12,7 @@ Example:
         require "triangle_classifier.rb"
 
         # :equilateral
-        classification = Triangle.classify(5, 5, 5)
+        classification = TriangleClassifier.classify(5, 5, 5)
 
 
 
